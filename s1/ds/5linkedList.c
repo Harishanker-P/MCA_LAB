@@ -36,10 +36,11 @@ void line();
 int main()
 {
     int ch;
+     // user menu
+        printf("\n\tMENU\n1.Create\n2.Insert begining\n3.Insert Position\n4.delete Position\n5.Search\n6.display\n99.exit");
     while (1)
     {
-        // user menu
-        printf("\n\tMENU\n1.Create\n2.Insert begining\n3.Insert Position\n4.delete Position\n5.Search\n6.display\n99.exit");
+       
         printf("\n enter your choice: ");
         scanf("%d", &ch);
         switch (ch)
