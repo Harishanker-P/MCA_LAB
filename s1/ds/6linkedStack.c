@@ -1,4 +1,4 @@
-// Linked stack
+// Linked stack - push, pop, linear search and traversal
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,15 +16,17 @@ Node *head = NULL;
 // for tracking the total number of nodes
 int nodecount = 0;
 
-
 // creating a new node
 Node *createNode(int);
 
 // insert a node at the beggning of the linked stack
 void push();
 
-//for deleting a node at the beggning of the linked stack
+// for deleting a node at the beggning of the linked stack
 void pop();
+
+// to sreach if an item is present in the linked stack or not
+void search();
 
 // display the linked stack
 void display();
@@ -32,15 +34,14 @@ void display();
 // just a line for creating a UI
 void line();
 
-
 int main()
 {
     int ch;
-     // user menu
-     
+
     while (1)
     {
-          printf("\n\tLINKED STACK MENU\n1.Push\n2.Pop\n3.display\n99.exit");
+        // user menu
+        printf("\n\tLINKED STACK MENU\n1.Push\n2.Pop\n3.Search\n4.display\n99.exit");
         printf("\n enter your choice: ");
         scanf("%d", &ch);
         switch (ch)
@@ -52,6 +53,9 @@ int main()
             pop();
             break;
         case 3:
+            search();
+            break;
+        case 4:
             display();
             break;
         case 99:
@@ -59,7 +63,7 @@ int main()
             return 0;
 
         default:
-        	printf("\nInvlid option Please enter a Valid option....\n");
+            printf("\nInvlid option Please enter a Valid option....\n");
             break;
         }
     }
@@ -84,42 +88,72 @@ void push()
     printf("\nEnter the data: ");
     scanf("%d", &data);
     Node *newNode = createNode(data);
-   if(head==NULL)
-   {
-   	head=newNode;
-   }
-   else
-   {
-   	 newNode->next = head;
-  	  head = newNode;
-   }
-   nodecount += 1;
-    printf("\nNode pushed to stack.......\n");
+    if (head == NULL)
+    {
+        head = newNode;
+    }
+    else
+    {
+        newNode->next = head;
+        head = newNode;
+    }
+    nodecount += 1;
+    printf("\n%d pushed to stack.......\n",data);
 
     line();
 }
 
-
-//for deleting a node at the beggning of the linked stack
+// for deleting a node at the beggning of the linked stack
 void pop()
 {
-	line();
-	if(head==NULL)
-	{
-		printf("UnderFlow...Linked stack is empty....");
-				
-	}	
-	else
-	{
-		Node *delNode;
-		delNode=head;
-		head=delNode->next;
-		printf("%d poped out of linked stack",delNode->data);
-		free(delNode);
-	}
-	line();
+    line();
+    if (head == NULL)
+    {
+        printf("UnderFlow...Linked stack is empty....");
+    }
+    else
+    {
+        Node *delNode;
+        delNode = head;
+        head = delNode->next;
+        printf("%d poped out of linked stack", delNode->data);
+        free(delNode);
+    }
+    line();
 }
-
+// to sreach if an item is present in the linked stack or not
+void search()
+{
+    line();
+    if (head == NULL)
+    {
+        printf("Linked Stack is Empty!!!");
+    }
+    else
+    {
+        int item, isFound = 0, pos = 1;
+        printf("\nEnter the item to search:");
+        scanf("%d", &item);
+        Node *temp;
+        temp = head;
+        while (temp != NULL)
+        {
+            if (item == temp->data)
+            {
+                printf("ITem found at Node : %d", pos);
+                isFound = 1;
+                break;
+            }
+            temp = temp->next;
+            pos += 1;
+        }
+        if (!isFound)
+        {
+            printf("\nItem not found in the list");
+        }
+    }
+    line();
+}
 // display the entrire linked list
 void display()
 {
@@ -133,13 +167,17 @@ void display()
     {
         Node *temp;
         temp = head;
-        printf("[ TOP]==>");
         while (temp != NULL)
         {
-            printf("[ %d ][ x-]-->", temp->data);
+            printf("\n[ %d ][x]", temp->data);
+            if (temp == head)
+            {
+                printf("<==[TOP]");
+            }
+
             temp = temp->next;
         }
-        printf("[ NULL ]");
+        printf("\n=========");
 
         printf("\n\nTotal Number of Nodes = %d ", nodecount);
     }

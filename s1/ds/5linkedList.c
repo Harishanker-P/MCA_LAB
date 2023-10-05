@@ -1,4 +1,4 @@
-// Linked list 
+// Linked list
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,11 +36,11 @@ void line();
 int main()
 {
     int ch;
-     // user menu
-        printf("\n\tMENU\n1.Create\n2.Insert begining\n3.Insert Position\n4.delete Position\n5.Search\n6.display\n99.exit");
     while (1)
     {
-       
+        // user menu
+        printf("\n\tMENU\n1.Create\n2.Insert begining\n3.Insert Position\n4.delete Position\n5.Search\n6.display\n99.exit");
+
         printf("\n enter your choice: ");
         scanf("%d", &ch);
         switch (ch)
@@ -68,6 +68,7 @@ int main()
             return 0;
 
         default:
+            printf("\nInvalid choice...Try again!!!\n");
             break;
         }
     }
@@ -195,7 +196,7 @@ void deltePos()
         scanf("%d", &pos);
         if (pos > 0 && pos <= nodecount)
         {
-            struct Node *temp, *nodeAtPos;
+            Node *temp, *nodeAtPos;
             if (pos == 1)
             {
                 nodeAtPos = head;
@@ -228,25 +229,32 @@ void deltePos()
 void search()
 {
     line();
-    int item, isFound = 0, pos = 1;
-    printf("\nEnter the item to search:");
-    scanf("%d", &item);
-    Node *temp;
-    temp = head;
-    while (temp != NULL)
+    if (head == NULL)
     {
-        if (item == temp->data)
-        {
-            printf("ITem found at Node : %d", pos);
-            isFound = 1;
-            break;
-        }
-        temp = temp->next;
-        pos += 1;
+        printf("Linked Stack is Empty!!!");
     }
-    if (!isFound)
+    else
     {
-        printf("\nItem not found in the list");
+        int item, isFound = 0, pos = 1;
+        printf("\nEnter the item to search:");
+        scanf("%d", &item);
+        Node *temp;
+        temp = head;
+        while (temp != NULL)
+        {
+            if (item == temp->data)
+            {
+                printf("ITem found at Node : %d", pos);
+                isFound = 1;
+                break;
+            }
+            temp = temp->next;
+            pos += 1;
+        }
+        if (!isFound)
+        {
+            printf("\nItem not found in the list");
+        }
     }
     line();
 }
