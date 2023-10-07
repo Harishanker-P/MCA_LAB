@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student Registration</title>
+    <style>
+        div {
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            border-radius: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+
+Prepare a Registration form to fill the following data for taking admission for any of the courses offered BA, B.Sc , BCA
+personal information name gender DOB address phone guardian hobbies and extra
+
+perform validation using java script 
+ -->
+
+
+    <div>
+        <form id="regForm" action="regForm.html" onsubmit="return jsValidate()" style="border: 1px solid red;">
+            <h2>Student Registration</h2>
+
+            <table>
+                <!-- name -->
+                <tr>
+                    <td><label for="name">Name: </label></td>
+                    <td><input type="text" name="name" id="name"></td>
+                </tr>
+                <!-- gender -->
+                <tr>
+                    <td><label for="gender">Gender: </label></td>
+                    <td colspan="3">
+                        Male: <input type="radio" name="gender" id="gender" value="m">
+                        Female: <input type="radio" name="gender" id="gender" value="f">
+                        Other: <input type="radio" name="gender" id="gender" value="o">
+                    </td>
+                </tr>
+                <!-- dob -->
+                <tr>
+                    <td><label for="dob">Dob: </label></td>
+                    <td><input type="date" required name="dob" id="dob"></td>
+                </tr>
+                <!-- email -->
+                <tr>
+                    <td><label for="Email">Email: </label></td>
+                    <td><input type="Email" name="Email" id="email"></td>
+                </tr>
+                <!-- phone -->
+                <tr>
+                    <td><label for="Phone">Phone: </label></td>
+                    <td><input type="text" name="Phone" id="phone"></td>
+                </tr>
+
+                <!-- address -->
+                <tr>
+                    <td><label for="address">Address</label></td>
+                    <td> <textarea name="address" id="address" cols="25" rows="5"></textarea></td>
+                </tr>
+                <!-- course -->
+                <tr>
+                    <td><label for="course">Course</label></td>
+                    <td>
+                        <select name="course" id="course">
+                            <option value="BA">BA</option>
+                            <option value="BCA">BCA</option>
+                            <option value="BSC">B.SC</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="hobbies">Hobbies</label></td>
+                    <td>
+                        coding<input id="coding" name="coding" type="checkbox" value="coding">
+                        reading<input id="reading" name="reading" type="checkbox" value="reading">
+                        games<input id="games" name="games" type="checkbox" value="games">
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submitbtn" id="submitbtn" value="submit"></td>
+                    <td><input type="reset" name="resetbtn" id="restbtn" value="reset"></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+
+</body>
+<script>
+    jsValidate = () => {
+        // validation for 
+        // name
+        try {
+            if (document.forms.regForm.name.value == "") {
+                alert("Please complete the form (name)....")
+                // document.forms.regForm.name.focus()
+                return false
+            }
+            // gender
+            if (document.forms.regForm.gender.value == "") {
+                alert("Please complete the form (gender)....")
+                // document.forms.regForm.gender.focus()
+                return false
+            }
+            // // dob
+            // if (document.forms.regForm.dob.value == "") {
+            //     alert("Please complete the form (date)....")
+            //     // document.forms.regForm.dob.focus()
+            //     return false
+            // }
+            // email
+            if (document.forms.regForm.email.value == "") {
+                alert("Please complete the form (email)....")
+                // document.forms.regForm.email.focus()
+                return false
+            }
+            // phone
+            if (document.forms.regForm.phone.value == "") {
+                alert("Please complete the form (phone)....")
+                // document.forms.regForm.phone.focus()
+                return false
+            }
+            // address 
+            if (document.forms.regForm.address.value == "") {
+                alert("Please complete the form (address)....")
+                // document.forms.regForm.address.focus()
+                return false
+            }
+            // course
+            if (document.forms.regForm.course.value == "") {
+                alert("Please complete the form (course)....")
+                // document.forms.regForm.course.focus()
+                return false
+            }
+            // hobbies
+            if (!(document.forms.regForm.coding.checked || document.forms.regForm.games.checked || document.forms.regForm.reading.checked)) {
+                alert("Please complete the form (hobbies)....")
+                // document.forms.regForm.hobbies.focus()
+                return false
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+
+        return true
+    }
+</script>
+
+</html>
