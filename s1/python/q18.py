@@ -9,7 +9,7 @@ for _ in range(limit):
 
 print("The words list is",words)
 n=int(input("Enter the value of n:"))
-print("The word longer than {} is".format(n))
+print("The words with length longer than {} is".format(n))
 for word in words:
     if(len(word)>n):
         print(word)

@@ -10,3 +10,4 @@ result=""
 for char in clist:
     result+=char
 print("The string is",result)
+
