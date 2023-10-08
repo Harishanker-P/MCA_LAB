@@ -48,7 +48,7 @@ perform validation using java script
                 <!-- dob -->
                 <tr>
                     <td><label for="dob">Dob: </label></td>
-                    <td><input type="date" required name="dob" id="dob"></td>
+                    <td><input type="date" name="dob" id="dob"></td>
                 </tr>
                 <!-- email -->
                 <tr>
@@ -58,7 +58,7 @@ perform validation using java script
                 <!-- phone -->
                 <tr>
                     <td><label for="Phone">Phone: </label></td>
-                    <td><input type="text" name="Phone" id="phone"></td>
+                    <td><input type="number" name="Phone" id="phone"></td>
                 </tr>
 
                 <!-- address -->
@@ -71,13 +71,14 @@ perform validation using java script
                     <td><label for="course">Course</label></td>
                     <td>
                         <select name="course" id="course">
+                            <option value="" selected hidden disabled>select course</option>
                             <option value="BA">BA</option>
                             <option value="BCA">BCA</option>
                             <option value="BSC">B.SC</option>
                         </select>
                     </td>
                 </tr>
-
+                <!-- hobbies -->
                 <tr>
                     <td><label for="hobbies">Hobbies</label></td>
                     <td>
@@ -86,6 +87,18 @@ perform validation using java script
                         games<input id="games" name="games" type="checkbox" value="games">
                     </td>
                 </tr>
+                <!--  gaurdian name -->
+                <tr>
+                    <td><label for="gaurdian">Gaurdian: </label></td>
+                    <td><input type="text" name="gaurdian" id="gaurdian"></td>
+                </tr>
+
+                <!--gaurdian phone -->
+                <tr>
+                    <td><label for="gaurdianPh">Phone: </label></td>
+                    <td><input type="number" name="gaurdianPh" id="gaurdianPh"></td>
+                </tr>
+                <!-- form buttons -->
                 <tr>
                     <td><input type="submit" name="submitbtn" id="submitbtn" value="submit"></td>
                     <td><input type="reset" name="resetbtn" id="restbtn" value="reset"></td>
@@ -99,11 +112,11 @@ perform validation using java script
 <script>
     jsValidate = () => {
         // validation for 
-        // name
         try {
+            // name
             if (document.forms.regForm.name.value == "") {
                 alert("Please complete the form (name)....")
-                // document.forms.regForm.name.focus()
+                document.forms.regForm.name.focus()
                 return false
             }
             // gender
@@ -113,11 +126,11 @@ perform validation using java script
                 return false
             }
             // // dob
-            // if (document.forms.regForm.dob.value == "") {
-            //     alert("Please complete the form (date)....")
-            //     // document.forms.regForm.dob.focus()
-            //     return false
-            // }
+            if (document.forms.regForm.dob.value == "") {
+                alert("Please complete the form (date)....")
+                document.forms.regForm.dob.focus()
+                return false
+            }
             // email
             if (document.forms.regForm.email.value == "") {
                 alert("Please complete the form (email)....")
@@ -127,19 +140,19 @@ perform validation using java script
             // phone
             if (document.forms.regForm.phone.value == "") {
                 alert("Please complete the form (phone)....")
-                // document.forms.regForm.phone.focus()
+                document.forms.regForm.phone.focus()
                 return false
             }
             // address 
             if (document.forms.regForm.address.value == "") {
                 alert("Please complete the form (address)....")
-                // document.forms.regForm.address.focus()
+                document.forms.regForm.address.focus()
                 return false
             }
             // course
             if (document.forms.regForm.course.value == "") {
                 alert("Please complete the form (course)....")
-                // document.forms.regForm.course.focus()
+                document.forms.regForm.course.focus()
                 return false
             }
             // hobbies
@@ -148,12 +161,25 @@ perform validation using java script
                 // document.forms.regForm.hobbies.focus()
                 return false
             }
+            // gaurdian name
+            if (document.forms.regForm.gaurdian.value == "") {
+                alert("Please complete the form (gaurdian name)....")
+                document.forms.regForm.gaurdian.focus()
+                return false
+            }
+            // gaurdian phone
+            if (document.forms.regForm.gaurdianPh.value == "") {
+                alert("Please complete the form (gaurdian phone)....")
+                document.forms.regForm.gaurdianPh.focus()
+                return false
+            }
 
+            return true
         } catch (error) {
             console.log(error);
+            return false
         }
 
-        return true
     }
 </script>
 
