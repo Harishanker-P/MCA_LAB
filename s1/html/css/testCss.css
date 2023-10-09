@@ -1,0 +1,21 @@
+body{
+	font-size:1.5rem;
+	background-color:rgba(25,105,215,.5);
+}
+#external{
+	color:green;
+}
+
+.container{
+
+	border:1px solid red;
+	width:1200px;
+	height:600px;
+	
+}
+
+.box{
+	width:250px;
+	height:250px;
+	border:1px solid yellow;
+}
