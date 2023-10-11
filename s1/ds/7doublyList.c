@@ -143,12 +143,86 @@ void insertBeg()
 void insertPos()
 {
     line();
+    int pos = 0;
+    printf("\nEnter the position:");
+    scanf("%d", &pos);
+
+    if (pos > 0 && pos <= nodeCount)
+    {
+        Node *temp, *newNode;
+        newNode = createNode();
+        if (pos == 1)
+        {
+            newNode->next = head;
+            head->prev=newNode;
+            head = newNode;
+        }
+        else
+        {
+            temp = head;
+            for (int i = 1; i <pos ; i++)
+            {
+                temp = temp->next;
+            }
+	
+	
+            newNode->next = temp;
+           temp->prev->next=newNode;
+            newNode->prev = temp->prev;
+          
+            temp->prev = newNode;
+            
+        }
+        nodeCount += 1;
+        printf("Node added successfully!!!!");
+    }
+    else
+    {
+        printf("invlid position...Try again");
+    }
     line();
 }
 // for deleting from a specific position
 void deltePos()
 {
     line();
+    if (head == NULL)
+    {
+        printf("linked list emtpy!!!");
+    }
+    else
+    {
+        int pos;
+        printf("enter the position to be deleted: ");
+        scanf("%d", &pos);
+        if (pos > 0 && pos <= nodeCount)
+        {
+            Node *temp, *nodeAtPos;
+            if (pos == 1)
+            {
+                nodeAtPos = head;
+                head = nodeAtPos->next;
+            }
+            else
+            {
+                temp = head;
+                for (int i = 1; i < pos ; i++)
+                {
+                    temp = temp->next;
+                }
+		printf("%dtemp\n",temp->data);
+                //nodeAtPos = temp->next;
+                //temp->next = nodeAtPos->next;
+            }
+            free(nodeAtPos);
+            printf("\nNode Deleted sucessfully!!!!");
+            nodeCount -= 1;
+        }
+        else
+        {
+            printf("\nEnter a valid position!!!");
+        }
+    }
     line();
 }
 
