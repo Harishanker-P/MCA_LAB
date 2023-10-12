@@ -4,7 +4,7 @@
 
 #define SIZE 5
 
-int items[SIZE];
+int Q[SIZE];
 int front = -1, rear = -1;
 
 // Check if the queue is full
@@ -22,13 +22,16 @@ int deQueue();
 // Display the queue
 void display();
 
+// line for a simple ui
+void line();
+
 int main()
 {
 
     int ch;
     while (1)
     {
-        printf("\nMENU\n1.");
+        printf("\nMENU\n1.Insert\n2.Delete\n3.Display\n99.exit\n");
         printf("Enter the choice: ");
         scanf("%d", &ch);
         switch (ch)
@@ -75,6 +78,7 @@ int isEmpty()
 // Adding an element
 void enQueue()
 {
+    line();
     if (isFull())
     {
 
@@ -88,14 +92,16 @@ void enQueue()
         if (front == -1)
             front = 0;
         rear = (rear + 1) % SIZE;
-        items[rear] = element;
+        Q[rear] = element;
         printf("\n Inserted -> %d", element);
     }
+    line();
 }
 
 // Removing an element
 int deQueue()
 {
+    line();
     int element;
     if (isEmpty())
     {
@@ -104,7 +110,7 @@ int deQueue()
     }
     else
     {
-        element = items[front];
+        element = Q[front];
         if (front == rear)
         {
             front = -1;
@@ -119,23 +125,33 @@ int deQueue()
         printf("\n Deleted element -> %d \n", element);
         return (element);
     }
+    line();
 }
 
 // Display the queue
 void display()
 {
+    line();
     int i;
     if (isEmpty())
         printf(" \n Empty Queue\n");
     else
     {
         printf("\n Front -> %d ", front);
-        printf("\n Items -> ");
+        printf("\n items -> ");
         for (i = front; i != rear; i = (i + 1) % SIZE)
         {
-            printf("%d ", items[i]);
+            printf("[item=%d,i=%d]", Q[i],i);
         }
-        printf("%d ", items[i]);
+        printf("[item=%d,i=%d]", Q[i],i);
         printf("\n Rear -> %d \n", rear);
     }
+    line();
+}
+
+
+// line for a simple ui
+void line()
+{
+    printf("\n\n*****************************************************************************************************************\n\n");
 }
