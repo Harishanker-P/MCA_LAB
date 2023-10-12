@@ -147,31 +147,38 @@ void insertPos()
     printf("\nEnter the position:");
     scanf("%d", &pos);
 
-    if (pos > 0 && pos <= nodeCount)
+    if (pos > 0 && pos <= nodeCount + 1)
     {
         Node *temp, *newNode;
         newNode = createNode();
         if (pos == 1)
         {
             newNode->next = head;
-            head->prev=newNode;
+            head->prev = newNode;
             head = newNode;
         }
         else
         {
             temp = head;
-            for (int i = 1; i <pos ; i++)
+            for (int i = 1; i < pos - 1; i++)
             {
                 temp = temp->next;
             }
-	
-	
-            newNode->next = temp;
-           temp->prev->next=newNode;
-            newNode->prev = temp->prev;
-          
-            temp->prev = newNode;
-            
+
+            if (temp->next == NULL)
+            {
+                temp->next = newNode;
+                newNode->prev = temp;
+            }
+            else
+            {
+                printf("temp-%d", temp->data);
+                // a-temp-x-c
+                newNode->prev = temp;
+                newNode->next = temp->next;
+                temp->next->prev = newNode;
+                temp->next = newNode;
+            }
         }
         nodeCount += 1;
         printf("Node added successfully!!!!");
@@ -197,22 +204,32 @@ void deltePos()
         scanf("%d", &pos);
         if (pos > 0 && pos <= nodeCount)
         {
-            Node *temp, *nodeAtPos;
+            // this variable contains the node to be deleted
+            Node *nodeAtPos;
             if (pos == 1)
             {
                 nodeAtPos = head;
                 head = nodeAtPos->next;
+                head->prev = NULL;
             }
             else
             {
-                temp = head;
-                for (int i = 1; i < pos ; i++)
+                nodeAtPos = head;
+                for (int i = 1; i < pos; i++)
                 {
-                    temp = temp->next;
+                    nodeAtPos = nodeAtPos->next;
                 }
-		printf("%dtemp\n",temp->data);
-                //nodeAtPos = temp->next;
-                //temp->next = nodeAtPos->next;
+                // checking if it is the last element
+                if (nodeAtPos->next == NULL)
+                {
+                    nodeAtPos->prev->next = NULL;
+                }
+                else
+                {
+
+                    nodeAtPos->next->prev = nodeAtPos->prev;
+                    nodeAtPos->prev->next = nodeAtPos->next;
+                }
             }
             free(nodeAtPos);
             printf("\nNode Deleted sucessfully!!!!");
