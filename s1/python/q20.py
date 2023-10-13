@@ -6,6 +6,8 @@ for _ in range(limit):
     numbers.append(number)
 numbers.sort()
 numbers=list(set(numbers))
+
+
 # for i in range(len(numbers)):
 #     for j in range(i+1,len(numbers)):
 #         if(numbers[i]>numbers[j]):
