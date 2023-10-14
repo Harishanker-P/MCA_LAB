@@ -10,6 +10,5 @@ print("Both collections sum the same value",sum(set(map(int,c1)))==sum(set(map(i
 
 # c) wheater any value occur in both
 
-for x in c1:
-    if x in c2:
+print("Both have common elements: ",bool(len(set(c1)&set(c2))))
         
