@@ -1,46 +1,78 @@
+//without declaring an array globally
+
 #include <stdio.h>
-// gobal array and number of elements
-int arr[100], n = 0;
+#include<stdlib.h>
+
 
 // reading the element of the array
-int readArray();
+int* readArray(int );
 
 // display the current array;
-void display();
+void display(int*,int);
 
-
+//to perform binary search
+void binary(int*,int);
 
 // to perform linear search
-void linear();
-
-// to perform binary search
-void binary();
+void linear(int* arr,int n);
 
 // for creating a simple ui
 void line();
 
 int main()
 {
-    int ch;
 
+    // array and number of elements
+    int *arr, n = 0;
+    
+   //for switch
+    int ch;
+	
     while (1)
     {
+    
         printf("\nMENU\n1.READ ARRAY\n2.DISPLAY\n3.LINEAR SEARCH\n4.BINARY SEARCH\n99.EXIT");
         printf("\nEnter your choice: ");
         scanf("%d", &ch);
         switch (ch)
         {
         case 1:
-            readArray();
+        		if(n==0)
+        		{
+        			printf("Enter the limit: ");
+        			scanf("%d",&n);
+        			arr=readArray(n);
+        		}
+        		else
+        		{
+        			char ow;
+				printf("Do you want to overwrite the existing array?(y/n): ");
+				scanf("%s", &ow);
+				if (ow == 'y' || ow == 'Y')
+				{
+				    printf("\nOverwriting.....\n");
+				    printf("Enter the limit: ");
+				    scanf("%d",&n);
+				    free(arr);
+				    arr=readArray(n);
+				}
+				else
+				{
+				    printf("\n Operation cancelled...\n");
+				}
+        			
+        		}
+            	
+            
             break;
         case 2:
-            display();
+            display(arr,n);
             break;
         case 3:
-            linear();
+           linear(arr,n);
             break;
         case 4:
-            binary();
+            binary(arr,n);
             break;
         case 99:
             printf("Exiting......");
@@ -55,37 +87,26 @@ int main()
 }
 
 // reading the element of the array
-int readArray()
+int* readArray(int n)
 {
     line();
-    if (n != 0)
-    {
-        char ow;
-        printf("Do you want to overwrite the existing array?(y/n): ");
-        scanf("%s", &ow);
-        if (ow == 'y' || ow == 'Y')
-        {
-            printf("\nOverwriting.....\n");
-        }
-        else
-        {
-            printf("\n.............\n");
-            return 0;
-        }
-    }
-    printf("Enter the limit:");
-    scanf("%d", &n);
+    //this is kind of the rigth method since it allocates only the needed space	
+    int *arr=(int *)malloc(n * sizeof(int));
+    
+    //this also work but you have to provide a constant size which willl techincally waste a lot of memory and also since we are providing a constant size we cant store more elements than the constant size
+    //static int arr[100];
     printf("Enter the elements: ");
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
     }
-
+    printf("\nArry created sucessfully...!!");
+    return arr;
     line();
 }
 
 // display the current array;
-void display()
+void display(int *arr,int n)
 {
     line();
     if (n != 0)
@@ -102,38 +123,8 @@ void display()
     }
     line();
 }
-// to perform linear search
-void linear()
-{
-    line();
-    if (n != 0)
-    {
-        int item, isFound = 0;
-        printf("enter the item to search:");
-        scanf("%d", &item);
-        for (int i = 0; i < n; i++)
-        {
-            if (arr[i] == item)
-            {
-                printf("Item found at pos %d!!!", i + 1);
-                isFound = 1;
-                break;
-            }
-        }
-        if (!isFound)
-        {
-            printf("Item Not Found!!");
-        }
-    }
-    else
-    {
-        printf("Array is empty!!");
-    }
-
-    line();
-}
-// to perform binary search
-void binary()
+//to perform binary search
+void binary(int *arr,int n)
 {
     line();
     if (n != 0)
@@ -188,6 +179,36 @@ void binary()
     line();
 }
 
+///to perform linear search
+void linear(int* arr,int n)
+{
+    line();
+    if (n != 0)
+    {
+        int item, isFound = 0;
+        printf("enter the item to search:");
+        scanf("%d", &item);
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] == item)
+            {
+                printf("Item found at pos %d!!!", i + 1);
+                isFound = 1;
+                break;
+            }
+        }
+        if (!isFound)
+        {
+            printf("Item Not Found!!");
+        }
+    }
+    else
+    {
+        printf("Array is empty!!");
+    }
+
+    line();
+}
 // line for a simple ui
 void line()
 {
