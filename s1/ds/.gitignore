@@ -4,6 +4,7 @@ ls.c
 nList.c
 test.c
 tree.c
+*.exe
 .exe
 a.out
 a.exe
