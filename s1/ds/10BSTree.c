@@ -1,3 +1,7 @@
+/*
+insert delete serach preee in  post display
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,7 +9,7 @@
 typedef struct Node
 {
 	int value;
-	struct Node *left, *right
+	struct Node *left, *right;
 } Node;
 
 // to track the number of nodes
