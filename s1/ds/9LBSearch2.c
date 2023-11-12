@@ -1,20 +1,19 @@
-//without declaring an array globally
+// without declaring an array globally
 
 #include <stdio.h>
-#include<stdlib.h>
-
+#include <stdlib.h>
 
 // reading the element of the array
-int* readArray(int );
+int *readArray(int);
 
 // display the current array;
-void display(int*,int);
+void display(int *, int);
 
-//to perform binary search
-void binary(int*,int);
+// to perform binary search
+void binary(int *, int);
 
 // to perform linear search
-void linear(int* arr,int n);
+void linear(int *arr, int n);
 
 // for creating a simple ui
 void line();
@@ -24,55 +23,53 @@ int main()
 
     // array and number of elements
     int *arr, n = 0;
-    
-   //for switch
+
+    // for switch
     int ch;
-	
+
     while (1)
     {
-    
+
         printf("\nMENU\n1.READ ARRAY\n2.DISPLAY\n3.LINEAR SEARCH\n4.BINARY SEARCH\n99.EXIT");
         printf("\nEnter your choice: ");
         scanf("%d", &ch);
         switch (ch)
         {
         case 1:
-        		if(n==0)
-        		{
-        			printf("Enter the limit: ");
-        			scanf("%d",&n);
-        			arr=readArray(n);
-        		}
-        		else
-        		{
-        			char ow;
-				printf("Do you want to overwrite the existing array?(y/n): ");
-				scanf("%s", &ow);
-				if (ow == 'y' || ow == 'Y')
-				{
-				    printf("\nOverwriting.....\n");
-				    printf("Enter the limit: ");
-				    scanf("%d",&n);
-				    free(arr);
-				    arr=readArray(n);
-				}
-				else
-				{
-				    printf("\n Operation cancelled...\n");
-				}
-        			
-        		}
-            	
-            
+            if (n == 0)
+            {
+                printf("Enter the limit: ");
+                scanf("%d", &n);
+                arr = readArray(n);
+            }
+            else
+            {
+                char ow;
+                printf("Do you want to overwrite the existing array?(y/n): ");
+                scanf("%s", &ow);
+                if (ow == 'y' || ow == 'Y')
+                {
+                    printf("\nOverwriting.....\n");
+                    printf("Enter the limit: ");
+                    scanf("%d", &n);
+                    free(arr);
+                    arr = readArray(n);
+                }
+                else
+                {
+                    printf("\n Operation cancelled...\n");
+                }
+            }
+
             break;
         case 2:
-            display(arr,n);
+            display(arr, n);
             break;
         case 3:
-           linear(arr,n);
+            linear(arr, n);
             break;
         case 4:
-            binary(arr,n);
+            binary(arr, n);
             break;
         case 99:
             printf("Exiting......");
@@ -87,14 +84,14 @@ int main()
 }
 
 // reading the element of the array
-int* readArray(int n)
+int *readArray(int n)
 {
     line();
-    //this is kind of the rigth method since it allocates only the needed space	
-    int *arr=(int *)malloc(n * sizeof(int));
-    
-    //this also work but you have to provide a constant size which willl techincally waste a lot of memory and also since we are providing a constant size we cant store more elements than the constant size
-    //static int arr[100];
+    // this is kind of the rigth method since it allocates only the needed space
+    int *arr = (int *)malloc(n * sizeof(int));
+
+    // this also work but you have to provide a constant size which willl techincally waste a lot of memory and also since we are providing a constant size we cant store more elements than the constant size
+    // static int arr[100];
     printf("Enter the elements: ");
     for (int i = 0; i < n; i++)
     {
@@ -106,7 +103,7 @@ int* readArray(int n)
 }
 
 // display the current array;
-void display(int *arr,int n)
+void display(int *arr, int n)
 {
     line();
     if (n != 0)
@@ -123,8 +120,8 @@ void display(int *arr,int n)
     }
     line();
 }
-//to perform binary search
-void binary(int *arr,int n)
+// to perform binary search
+void binary(int *arr, int n)
 {
     line();
     if (n != 0)
@@ -154,7 +151,7 @@ void binary(int *arr,int n)
             mid = (lb + ub) / 2;
             if (item == arr[mid] || item == arr[1])
             {
-                printf("item found at %d",mid+1);
+                printf("item found at %d", mid + 1);
                 flag = 1;
                 break;
             }
@@ -179,8 +176,8 @@ void binary(int *arr,int n)
     line();
 }
 
-///to perform linear search
-void linear(int* arr,int n)
+/// to perform linear search
+void linear(int *arr, int n)
 {
     line();
     if (n != 0)
