@@ -1,0 +1,1 @@
+# write a program to find the sum of elements in a list
