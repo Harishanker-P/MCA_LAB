@@ -1,0 +1,2 @@
+def hy():
+    print("cuboid")
