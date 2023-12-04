@@ -1,15 +1,20 @@
+
+
+<body>
+    
+</body>
+
 <?php
 
-$con=new mysqli('localhost','root','');
-if($con->connect_error)
-{
-    die("error caught $con->connect_error");
-}
-$q="CREATE DATABASE IF NOT EXISTS PRODUCTS";
-if(!$con->query($q))
-{
-    echo "failed to create database : $con->error";
-    $q="";
-}
+    // $q="INSERT INTO `poduct_details` (`id`, `name`, `qty`, `unit_price`) VALUES (NULL, 'test2', '0', '250')";
+    // echo "<script>
 
-?>
+    // alert('taking you to google');
+    
+    
+    
+    // </script>";
+    
+    // header('refresh:0,url=https://www.google.com/');
+?> 
+SELECT * FROM `poduct_details`

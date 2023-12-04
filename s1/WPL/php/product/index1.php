@@ -58,7 +58,7 @@
         <div class="con2">
             <h2><u>PRODUCT MANAGEMENT</u></h2>
             <ul>
-                <li><a href="add.html">ADD PRODUCTS</a></li>
+                <li><a href="add.php">ADD PRODUCTS</a></li>
                 <li><a href="view.php">VIEW PRODUCTS</a></li>
                 <li><a href="delete.php">ADD PRODUCT</a></li>
             </ul>
