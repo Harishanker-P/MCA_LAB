@@ -41,11 +41,19 @@
             color: lime;
             text-decoration: none;
         }
+
+        a:hover {
+            color: red;
+            
+        }
     </style>
 </head>
 
 <body>
 
+    <?php
+     include('db.php');
+    ?>
     <div class="con">
         <div class="con2">
             <h2><u>PRODUCT MANAGEMENT</u></h2>
