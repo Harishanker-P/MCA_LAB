@@ -57,28 +57,50 @@
     ?>
     <div class="con">
         <div class="con2">
-            <h2><u>ALL PRODUCTS</u></h2>
+            <h2 class="text-center"><u>ALL PRODUCTS</u></h2>
             <?php
             
                 $con=new mysqli('localhost','root','','PRODUCTS');
                 $q="SELECT * FROM `poduct_details`";
                 $products=$con->query($q);
+                echo "<table class='table table-dark table-striped text-center'>
+                
+                        <thead>
+                            <tr>
+                                <th scope='col'>#</th>
+                                <th scope='col'>NAME</th>
+                                <th scope='col'>QTY</th>
+                                <th scope='col'>UNIT PRICE</th>
+                                <th scope='col'>TOTAL PRICE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                ";
+                $i=1;
                 while($row=$products->fetch_assoc())
                 {
+                    $name=$row['name'];
+                    $qty=intval($row['qty']);
+                    $unit_price=intval($row['unit_price']);
+                    $total_price=$qty*$unit_price;
+
                     echo "
                     
-                    <table class='table table-striped'>
-
-                    <tr>
-  <td class='table-primary'>...</td>
-  
-</tr>
-                    ...
-                  </table>
                     
+                      <tr>
+                        <th scope='row'>$i</th>
+                        <td>$name</td>
+                        <td>$qty</td>
+                        <td>₹$unit_price </td>
+                        <td>₹$total_price </td>
+                    
+                      </tr>
                     ";
+                    $i++;
                 }
-                
+                echo "  
+                </tbody>
+                </table>";
                 if(1)
                 {
 
@@ -90,7 +112,7 @@
                 }
                 
             ?>
-            
+            <button class="btn btn-dark"><a href="./index1.php">Home</a></button>
         </div>
     </div>
 

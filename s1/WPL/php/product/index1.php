@@ -60,7 +60,7 @@
             <ul>
                 <li><a href="add.php">ADD PRODUCTS</a></li>
                 <li><a href="view.php">VIEW PRODUCTS</a></li>
-                <li><a href="delete.php">ADD PRODUCT</a></li>
+                <li><a href="delete.php">EDIT PRODUCT</a></li>
             </ul>
         </div>
     </div>
