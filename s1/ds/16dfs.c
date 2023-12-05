@@ -1,6 +1,6 @@
 #include <stdio.h>
 // stack, top of stack, adjacency matrix, visted vertices,number of vertices
-int stk[10], top = -1, adj[10][10] = {0}, visted[10] = {0}, N;
+int stk[20], top = -1, adj[20][20] = {0}, visted[20] = {0}, N;
 
 void read()
 {
@@ -42,53 +42,32 @@ void dfs(int start)
     int curV = start;
     visted[curV] = 1;
     printf("%d ", curV);
-    top+=1;
-    stk[top] = curV;
-
-    while (top != -1)
+    stk[++top] = curV;
+    int count = 1;
+    while (count != N)
     {
-        top-=1;
-        curV = stk[top];
-        printf("%d ", curV);
         for (int i = 1; i <= N; i++)
         {
             if (adj[curV][i] && !visted[i])
             {
-                top+=1;
-                stk[top] = i;
-                visted[i] = 1;
+                curV = i;
+                printf("%d ", curV);
+                count += 1;
+                stk[++top] = curV;
+                visted[curV] = 1;
             }
         }
+        curV = stk[--top];
     }
 }
-// // printf("here,%d\n",top);
-// for (int i = 1; i <= N; i++)
-// {
-//     // printf("adj[%d][%d]=%d and visisted[%d]=%d\n", curV, i, adj[curV][i], i, visted[i]);
-//     if (adj[curV][i] && !visted[i])
-//     {
-//         visted[curV] = 1;
-//         curV = i;
-//         printf("%d ", curV);
-//         top += 1;
-//         stk[top] = curV;
-//         goto Here;
-//     }
-//     // printf("i %d\n",i);
-// }
-// top -= 1;
-// if (top != -1)
-// {
-//     // printf("top\n");
-//     curV = stk[top];
-//     goto Here;
-// }
 
 int main()
 {
-
+    int start;
     read();
     display();
-    dfs(1);
+    printf("Enter the starting vertex: ");
+    scanf("%d", &start);
+    dfs(start);
     return 0;
 }
