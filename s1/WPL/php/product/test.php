@@ -1,20 +1,13 @@
-
-
-<body>
-    
-</body>
-
 <?php
 
-    // $q="INSERT INTO `poduct_details` (`id`, `name`, `qty`, `unit_price`) VALUES (NULL, 'test2', '0', '250')";
-    // echo "<script>
+$id=$_GET['edit'];
+echo "<button onclick='test($id)'>click</button>"
 
-    // alert('taking you to google');
-    
-    
-    
-    // </script>";
-    
-    // header('refresh:0,url=https://www.google.com/');
-?> 
-SELECT * FROM `poduct_details`
+
+
+?>
+<script>
+    test=(id)=>{
+        alert(id);
+    }
+</script>

@@ -57,15 +57,37 @@
 <body>
 
     <?php
-     include('db.php');
+     if(isset($_GET['editBtn']))
+     {
+         $con=new mysqli('localhost','root','','PRODUCTS');
+       
+        if($con->connect_error)
+        {
+            die("failed to connect to the database!!!");
+        }
+        else{
+            
+            $id=$_GET['editBtn'];
+            $q="SELECT * FROM `poduct_details` where $id";
+           
+            
+                $res=$con->query($q)->fetch_assoc();
+
+                $name=$res['name'];
+                $qty=$res['qty'];
+                $unit_price=$res['unit_price'];
+
+        }
+
+     }
     ?>
     <div class="con">
         <div class="con2">
-            <h2><u>INSERT PRODUCT</u></h2>
+            <h2><u>UPDATE PRODUCT</u></h2>
             <form action="add.php" method="post">
 
             <ul>
-                <li><label for="">NAME: </label> <input type="text" required name="name"></li>
+                <li><label for="">NAME: </label> <input type="text" <?php echo"value=$name";?> required name="name"></li>
                 <li><label for="">QTY: </label>  <input type="number"  required name="qty"></li>
                 <li><label for="">PRICE: </label> <input type="number"  required  name="price"></li>
             </ul>

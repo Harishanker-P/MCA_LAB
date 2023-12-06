@@ -81,6 +81,7 @@
                 $i=1;
                 while($row=$products->fetch_assoc())
                 {
+                    $id=$row['id'];
                     $name=$row['name'];
                     $qty=intval($row['qty']);
                     $unit_price=intval($row['unit_price']);
@@ -94,10 +95,13 @@
                         <td>$name</td>
                         <td>$qty</td>
                         <td>₹$unit_price </td>
-                        <td><button class='btn btn-dark'><i class='fa-solid fa-pencil' style='color: #ffbe0a;'></i></button></td>
-                        
-                        
-                        <td><button class='btn btn-dark'><i class='fa-solid fa-trash' style='color: #ff0000;'></i></button></td>
+                        <form action='update.php' method='get'>
+                        <td><button type='submit' value='$id' name='editBtn'   class='btn btn-dark'><i class='fa-solid fa-pencil' style='color: #ffbe0a;'></i></button></td>
+                        </form>
+
+                        <form action='action.php' onsubmit='return con()' method='get'>
+                        <td><button type='submit' value='$id' name='delBtn' class='btn btn-dark'><i class='fa-solid fa-trash' style='color: #ff0000;'></i></button></td>
+                        </form>
                        
                       </tr>
                     ";
@@ -122,6 +126,13 @@
     </div>
 
 </body>
+<script>
+    con=()=>{
+        
+        return confirm('are you sure??');
+    }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </html>
