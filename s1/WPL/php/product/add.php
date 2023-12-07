@@ -97,7 +97,7 @@ if(isset($_POST['submit']))
 
                         alert('$name inserted successfully');
                      </script>";
-                    header('refresh:1,url=http://localhost/MCA_LAB/s1/WPL/php/product/index1.php');
+                    header('refresh:1,url=http://localhost/harishanker/MCA_LAB/s1/WPL/php/product/index1.php');
         }
         else{
             echo "failed to insert : $con->error";

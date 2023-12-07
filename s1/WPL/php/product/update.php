@@ -84,14 +84,14 @@
     <div class="con">
         <div class="con2">
             <h2><u>UPDATE PRODUCT</u></h2>
-            <form action="add.php" method="post">
+            <form action="up.php" method="post">
 
             <ul>
                 <li><label for="">NAME: </label> <input type="text" <?php echo"value=$name";?> required name="name"></li>
-                <li><label for="">QTY: </label>  <input type="number"  required name="qty"></li>
-                <li><label for="">PRICE: </label> <input type="number"  required  name="price"></li>
+                <li><label for="">QTY: </label>  <input type="number" <?php echo"value=$qty";?> required name="qty"></li>
+                <li><label for="">PRICE: </label> <input type="number" <?php echo"value=$unit_price";?>  required  name="price"></li>
             </ul>
-            <center><button type="submit" name="submit">ADD</button></center>
+            <center><button type="submit" <?php echo "value=$id;" ?> name="update">Update</button></center>
             </form>
         </div>
     </div>
@@ -101,32 +101,3 @@
 
 </html>
 
-<?php
-if(isset($_POST['submit']))
-{
-   
-    $name=$_POST['name'];
-    $qty=$_POST['qty'];
-    $price=$_POST['price'];
-
-       
-    
-        $con=new mysqli('localhost','root','','PRODUCTS');
-        $q="INSERT INTO `poduct_details` (`id`, `name`, `qty`, `unit_price`) VALUES (NULL, '$name', '$qty', '$price')";
-        if($con->query($q))
-        {
-              echo "<script>
-
-                        alert('$name inserted successfully');
-                     </script>";
-                    header('refresh:1,url=http://localhost/MCA_LAB/s1/WPL/php/product/index1.php');
-        }
-        else{
-            echo "failed to insert : $con->error";
-        }
-        
-}
-
-
-?>
- 
