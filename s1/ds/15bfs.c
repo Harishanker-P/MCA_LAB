@@ -16,7 +16,7 @@ void read()
     for (int i = 1; i <= V; i++)
     {
         for (int j = i; j <= V; j++)
-.        {
+       {
             if (i != j)
             {
                 printf("(%d,%d)=>", i, j);

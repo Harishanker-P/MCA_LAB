@@ -1,7 +1,21 @@
 #include <stdio.h>
+int adj[10][10], N, visted[10] = {0};
+int inDegree[10]={0};
+void ts()
+{
+    for(int i=1;i<=N;i++)
+    {
+        for(int j=1;j<=N;j++)
+        {
+            if(adj[i][j])
+            {
+                inDegree[j]==1;
+            }
+        }
+    }
+}
 int main()
 {
-    int adj[10][10], N;
     printf("Enter the no of vertices:");
     scanf("%d", &N);
     printf("enter the adjacency matrix:\n");
@@ -21,5 +35,6 @@ int main()
         }
         printf("\n");
     }
+
     return 0;
 }
