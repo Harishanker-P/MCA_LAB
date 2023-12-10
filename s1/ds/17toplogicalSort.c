@@ -16,8 +16,7 @@ void main()
     printf("The topological sorting is: ");
     int count = 0, curv, flag = 1;
 
-    int k = 1;
-    while (count != N && k != 20)
+       while (count != N)
     {
 
         for (int i = 1; i <= N; i++)
